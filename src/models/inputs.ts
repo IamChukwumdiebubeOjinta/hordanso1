@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface NoLabelInput {
   id: string;
   type: string;
@@ -17,11 +19,27 @@ export interface LabelInput {
   input: {
     id: string;
     type: string;
-    name: string;
+    name?: string;
     placeholder?: string;
     pattern?: string;
-    value: string;
+    value?: string;
     required?: boolean;
     n_class?: string;
+    handleChange?: () => void;
+    handleBlur?: () => void;
+  };
+}
+
+export interface RegisterValues {
+  Fname: string;
+  Lname: string;
+  email: string;
+  password: string;
+}
+
+export interface FormValues {
+  target: {
+    name: string;
+    value: React.ReactNode;
   };
 }

@@ -1,7 +1,17 @@
-import React, { useContext, useState, createContext, useEffect, ReactNode } from "react";
+import React, {
+  useContext,
+  useState,
+  createContext,
+  useEffect,
+  ReactNode,
+} from "react";
 import { Layout } from "../models";
 
-const context = createContext({});
+const context = createContext<{
+  user?: User;
+  loginUser?: () => void;
+  logoutUser?: () => void;
+}>({});
 
 export function useUserDetails() {
   return useContext(context);
@@ -9,7 +19,7 @@ export function useUserDetails() {
 
 export interface User {
   userName: string;
-  isLoggedIn: boolean
+  isLoggedIn: boolean;
 }
 
 const UserContextProvider = ({ children }: Layout) => {

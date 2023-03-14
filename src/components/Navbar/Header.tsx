@@ -11,7 +11,13 @@ const NavLink = ({ to, text }: NavbarLinkProps) => {
 
   return (
     <span onClick={clickHandler}>
-      <Navbar.Link href={to} active={location.pathname === to} className={`rounded-md nav-link ${location.pathname === to ? 'bg-[#ad1f29ee]' : ''}`}>
+      <Navbar.Link
+        href={to}
+        active={location.pathname === to}
+        className={`rounded-md nav-link md:hover:text-[#ad1f29] ${
+          location.pathname === to ? "sm:bg-transparent bg-[#ad1f29] md:text-[#ad1f29]" : ""
+        }`}
+      >
         {text}
       </Navbar.Link>
     </span>
@@ -28,20 +34,19 @@ const NavInfo = ({
       inline={true}
       label={<Avatar alt={alt} img={image} rounded={true} />}
     >
-      <Dropdown.Header>
+      <Dropdown.Item>
         <span className="block text-sm">{name}</span>
         {/* <span className="block truncate text-sm font-medium">
             name@flowbite.com
           </span> */}
-      </Dropdown.Header>
+      </Dropdown.Item>
     </Dropdown>
   );
 };
 
 const Header = () => {
-  let {user} : {user: User} = useUserDetails()
+  let { user, logoutUser } = useUserDetails();
 
-  console.log(user)
   return (
     <>
       <Navbar fluid={true} rounded={true}>
@@ -64,9 +69,14 @@ const Header = () => {
           {/* Nav links */}
           <Navbar.Collapse>
             <NavLink to="/" text="Home" />
-            {/* {!user.isLoggedIn ? () : ()} */}
-            <NavLink to="/login" text="Login" />
-            <NavLink to="/register" text="Register" />
+            {!user?.isLoggedIn ? (
+              <>
+                <NavLink to="/login" text="Login" />
+                <NavLink to="/register" text="Register" />
+              </>
+            ) : (
+              <NavLink to="#" text="Logout" />
+            )}
           </Navbar.Collapse>
         </>
       </Navbar>

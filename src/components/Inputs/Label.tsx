@@ -2,7 +2,7 @@ import { LabelInput } from "../../models";
 
 const Label = ({
   label: { text, l_class, htmlFor },
-  input: { id, placeholder, type, n_class, name, value, required, pattern },
+  input: { id, placeholder, type, n_class, name, value, required, pattern, handleChange, handleBlur },
 }: LabelInput) => {
   return (
     <div className="mb-5">
@@ -22,6 +22,8 @@ const Label = ({
         pattern={pattern}
         value={value}
         required={required}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
     </div>
   );

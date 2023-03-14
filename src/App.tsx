@@ -9,6 +9,7 @@ import { Routes, UserContextProvider } from "./utils";
 import { HomeLayout, AuthLayout } from "./layout";
 import { Home, Login, Register } from "./pages";
 
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
