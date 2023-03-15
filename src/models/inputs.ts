@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FormEvent, HTMLInputTypeAttribute} from "react";
 
 export interface NoLabelInput {
   id: string;
@@ -25,21 +25,12 @@ export interface LabelInput {
     value?: string;
     required?: boolean;
     n_class?: string;
-    handleChange?: () => void;
-    handleBlur?: () => void;
+    handleChange?: (e: FormEvent) => void;
+    handleBlur?: (e: FormEvent) => void;
   };
-}
-
-export interface RegisterValues {
-  Fname: string;
-  Lname: string;
-  email: string;
-  password: string;
 }
 
 export interface FormValues {
-  target: {
-    name: string;
-    value: React.ReactNode;
-  };
+  email: HTMLInputTypeAttribute;
+  password: HTMLInputTypeAttribute;
 }
