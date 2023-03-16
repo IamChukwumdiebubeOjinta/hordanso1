@@ -28,9 +28,12 @@ export interface LabelInput {
     handleChange?: (e: FormEvent) => void;
     handleBlur?: (e: FormEvent) => void;
   };
+  errMsg?: React.ReactNode;
 }
 
 export interface FormValues {
+  username: HTMLInputTypeAttribute;
   email: HTMLInputTypeAttribute;
   password: HTMLInputTypeAttribute;
+  'confirm-password' : HTMLInputTypeAttribute;
 }

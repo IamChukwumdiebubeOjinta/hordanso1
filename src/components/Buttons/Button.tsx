@@ -1,10 +1,11 @@
 import { CustomButton } from "../../models";
 
-export const Button = ({ className, text }: CustomButton) => (
+export const Button = ({ className, text, image, onclick }: CustomButton) => (
   <button
-    className={`w-full p-3 mt-4 rounded shadow ${className}`}
+    className={`w-full p-3 mt-4 flex justify-center gap-2 rounded shadow ${className}`}
     type='submit'
+    onClick={onclick}
   >
-    {text}
+   {image && <img src={image} alt="image" className="w-6 h-6" />} {text}
   </button>
 );

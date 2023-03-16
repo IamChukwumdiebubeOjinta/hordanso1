@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { User } from "../../utils/UserContextProvider";
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { auth } from '../../vendors/firebase-config';
 import { useUserDetails } from "../../utils/UserContextProvider";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import { NavbarLinkProps, NavProfileProps } from "../../models";
@@ -45,7 +45,7 @@ const NavInfo = ({
 };
 
 const Header = () => {
-  let { user, logoutUser } = useUserDetails();
+  const [user] = useAuthState(auth);
 
   return (
     <>
@@ -69,7 +69,7 @@ const Header = () => {
           {/* Nav links */}
           <Navbar.Collapse>
             <NavLink to="/" text="Home" />
-            {!user?.isLoggedIn ? (
+            {!user ? (
               <>
                 <NavLink to="/login" text="Login" />
                 <NavLink to="/register" text="Register" />
