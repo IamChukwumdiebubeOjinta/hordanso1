@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, CheckIcon, Label, WarnIcon } from "../../components";
-import { FormValues } from "../../models";
 import Logo from "../../assets/googleLogo.png";
 import { useFormik } from "formik";
 import { useState } from "react";

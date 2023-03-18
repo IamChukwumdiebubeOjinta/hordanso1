@@ -1,5 +1,5 @@
-import {useAuthState} from 'react-firebase-hooks/auth'
-import { auth } from '../../vendors/firebase-config';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../vendors/firebase-config";
 import { useUserDetails } from "../../utils/UserContextProvider";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import { NavbarLinkProps, NavProfileProps } from "../../models";
@@ -15,7 +15,9 @@ const NavLink = ({ to, text }: NavbarLinkProps) => {
         href={to}
         active={location.pathname === to}
         className={`rounded-md nav-link md:hover:text-[#ad1f29] ${
-          location.pathname === to ? "sm:bg-transparent bg-[#ad1f29] md:text-[#ad1f29]" : ""
+          location.pathname === to
+            ? "sm:bg-transparent bg-[#ad1f29] md:text-[#ad1f29]"
+            : ""
         }`}
       >
         {text}
@@ -56,16 +58,21 @@ const Header = () => {
         {/* Right */}
         <>
           <div className="flex md:order-2 gap-2">
-            <NavInfo
-              avatar={{
-                alt: "Profile Picture",
-                image:
-                  "https://flowbite.com/docs/images/people/profile-picture-5.jpg",
-              }}
-              info={{ name: "Graham Potter" }}
-            />
-            <Navbar.Toggle />
+            {user && (
+              <>
+                <NavInfo
+                  avatar={{
+                    alt: "Profile Picture",
+                    image:
+                      "https://flowbite.com/docs/images/people/profile-picture-5.jpg",
+                  }}
+                  info={{ name: "Graham Potter" }}
+                />
+                <Navbar.Toggle />
+              </>
+            )}
           </div>
+
           {/* Nav links */}
           <Navbar.Collapse>
             <NavLink to="/" text="Home" />
@@ -75,7 +82,10 @@ const Header = () => {
                 <NavLink to="/register" text="Register" />
               </>
             ) : (
-              <NavLink to="#" text="Logout" />
+              <>
+                <NavLink to="/translate" text="Translate" />
+                <NavLink to="/generate" text="Generate" />
+              </>
             )}
           </Navbar.Collapse>
         </>
