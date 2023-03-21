@@ -1,8 +1,12 @@
-import {ReactNode} from 'react'
+import { ReactNode } from "react";
 export interface Layout {
-    children: ReactNode
+  children: ReactNode;
 }
 
-export type User = {
-    
-}
+export type RouterProps = {
+  to?: string;
+  path?: string;
+  redirectPath?: string;
+  children?: ReactNode;
+  element?: ReactNode;
+};

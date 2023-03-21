@@ -38,9 +38,10 @@ const NavInfo = ({
     >
       <Dropdown.Item>
         <span className="block text-sm">{name}</span>
-        {/* <span className="block truncate text-sm font-medium">
-            name@flowbite.com
-          </span> */}
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>
+        <button className="block truncate text-sm font-medium">Logout</button>
       </Dropdown.Item>
     </Dropdown>
   );

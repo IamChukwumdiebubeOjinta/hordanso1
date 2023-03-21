@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-body {margin: 0;}
-h1, h2, h3 {font-family: 'Playfair Display', serif;}
+body {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+}
 
+.features {
+  height: 80vh;
+  position: relative;
+  display: flex;
+}
 
+.chat-field .input {
+  background: #ad1f2833;
+  border: 2px solid #ad1f29b5;
+}
+
+.chat-field .chat-btn{
+  background: #ad1f28ce;
+}
