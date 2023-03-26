@@ -69,15 +69,12 @@ const Login = () => {
     setLoading(true);
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        console.log(token);
         if (token) localStorage.setItem("h-token", token);
         // The signed-in user info.
         const user = result?.user;
-        console.log(user.displayName);
         if (user) {
           let { displayName, email, uid } = user;
           let hInfo = { ...{ displayName, email, uid } };

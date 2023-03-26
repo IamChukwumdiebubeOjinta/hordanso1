@@ -10,7 +10,7 @@ import openai from "../../vendors/Openai";
 const storage = getStorage();
 const messageRef = ref(storage, "messages");
 // const query = messageRef.
-console.log(messageRef);
+// console.log(messageRef);
 
 type GetValueProp = {
   onValueFromChild: (value: {}) => void;

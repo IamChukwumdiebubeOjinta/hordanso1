@@ -25,7 +25,7 @@ export interface LabelInput {
     value?: string;
     required?: boolean;
     n_class?: string;
-    handleChange?: (e: FormEvent) => void;
+    handleChange?: (e: FormEvent) => void | ((e: React.ChangeEvent<HTMLTextAreaElement>) => void);
     handleBlur?: (e: FormEvent) => void;
   };
   errMsg?: React.ReactNode;

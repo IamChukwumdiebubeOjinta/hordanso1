@@ -7,7 +7,13 @@ import {
 } from "react-router-dom";
 import { Routes, UserContextProvider } from "./utils";
 import { HomeLayout, AuthLayout, ProtectLayout } from "./layout";
-import { Home, Login, Register, Translate, Generate } from "./pages";
+import { lazy, Suspense } from "react";
+import { Home } from "./pages";
+
+const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Register/Register"));
+const Generate = lazy(() => import("./pages/Generate/Generate"));
+const Translate = lazy(() => import("./pages/Translate/Translate"));
 
 function App() {
   const router = createBrowserRouter(
@@ -26,14 +32,20 @@ function App() {
           <Route path={Routes.login} element={<Login />} />
           <Route path={Routes.register} element={<Register />} />
         </Route>
+        <Route element={<Suspense fallback={<h2>Loading...</h2>} />}></Route>
       </Route>
     )
   );
   return (
     <UserContextProvider>
-      <RouterProvider router={router} />
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <RouterProvider router={router} />
+      </Suspense>
     </UserContextProvider>
   );
 }
 
 export default App;
+
+// rain in the cliffs of nigeria
+// a vase from pluto

@@ -2,7 +2,11 @@ import { getStorage } from "firebase/storage";
 import { FirebaseConfig } from "../models";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import {
   GoogleAuthProvider,
   signInWithPopup,
@@ -14,14 +18,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig: FirebaseConfig = {
-  apiKey: "AIzaSyD-DgDecJHmllofAsaFklFKJ2oLFWIm7_8",
-  authDomain: "ts-assessment.firebaseapp.com",
-  databaseURL:
-    "https://ts-assessment-default-rtdb.europe-west1.firebasedatabase.app",
+  apiKey: import.meta.env.VITE_FIREBASE_API,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DB_URL,
   projectId: "ts-assessment",
-  storageBucket: "ts-assessment.appspot.com",
-  messagingSenderId: "780775455568",
-  appId: "1:780775455568:web:24172b9a2365c2e99c0a55",
+  storageBucket: import.meta.env.VITE_FIREBASE_StorageBucket,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_messagingSenderId,
+  appId: import.meta.env.VITE_FIREBASE_appId,
 };
 
 // Initialize Firebase
@@ -41,4 +44,5 @@ export {
   signInWithPopup,
   fireDb,
   storage,
+  signOut,
 };

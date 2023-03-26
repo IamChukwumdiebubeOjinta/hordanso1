@@ -7,14 +7,7 @@ import { useFormik } from "formik";
 import Logo from "../../assets/googleLogo.png";
 import { FormValues } from "../../models";
 import { ref, set } from "firebase/database";
-import {
-  Button,
-  Label,
-  CheckIcon,
-  CloseIcon,
-  ErrorIcon,
-  WarnIcon,
-} from "../../components";
+import { Button, Label, CheckIcon, WarnIcon } from "../../components";
 import {
   auth,
   createUserWithEmailAndPassword,
@@ -115,8 +108,8 @@ const Register = () => {
           let { displayName, email, uid } = user;
           let hInfo = { ...{ displayName, email, uid } };
           localStorage.setItem("h-object", JSON.stringify(hInfo));
-          navigate('/', {replace: true})
-          setLoading(false)
+          navigate("/", { replace: true });
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -128,26 +121,26 @@ const Register = () => {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
 
-        if(credential){
+        if (credential) {
           setLoading(false);
           toast.error("credentials are already used", {
-            id: 'credentials',
+            id: "credentials",
             icon: <WarnIcon />,
             duration: 2000,
           });
         }
-        if(email){
+        if (email) {
           setLoading(false);
           toast.error("email are already used", {
-            id: 'email',
+            id: "email",
             icon: <WarnIcon />,
             duration: 2000,
           });
         }
 
-        setLoading(false)
+        setLoading(false);
         toast.error(errorMessage, {
-          id: 'error',
+          id: "error",
           icon: <WarnIcon />,
           duration: 2000,
         });

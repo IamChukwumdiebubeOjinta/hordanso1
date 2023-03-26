@@ -1,9 +1,12 @@
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../vendors/firebase-config";
-import { useUserDetails } from "../../utils/UserContextProvider";
+import { auth, signOut } from "../../vendors/firebase-config";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import { NavbarLinkProps, NavProfileProps } from "../../models";
-import { useLocation, useLinkClickHandler } from "react-router-dom";
+import {
+  useLocation,
+  useLinkClickHandler,
+  useNavigate,
+} from "react-router-dom";
 
 const NavLink = ({ to, text }: NavbarLinkProps) => {
   const location = useLocation();
@@ -30,6 +33,11 @@ const NavInfo = ({
   avatar: { alt, image },
   info: { name },
 }: NavProfileProps) => {
+  const navigate = useNavigate();
+  const logOut = async () => {
+    await signOut(auth);
+    navigate("/", { replace: true });
+  };
   return (
     <Dropdown
       arrowIcon={false}
@@ -41,7 +49,9 @@ const NavInfo = ({
       </Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item>
-        <button className="block truncate text-sm font-medium">Logout</button>
+        <button className="block truncate text-sm font-medium" onClick={logOut}>
+          Logout
+        </button>
       </Dropdown.Item>
     </Dropdown>
   );
